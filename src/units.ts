@@ -1,0 +1,14 @@
+export const px = (x: number): string => `${x}px`
+export const ex = (x: number): string => `${x}ex`
+export const cm = (x: number): string => `${x}cm`
+export const mm = (x: number): string => `${x}mm`
+export const inches = (x: number): string => `${x}in`
+export const pt = (x: number): string => `${x}pt`
+export const pc = (x: number): string => `${x}pc`
+export const em = (x: number): string => `${x}em`
+export const rem = (x: number): string => `${x}rem`
+export const vw = (x: number): string => `${x}vw`
+export const vh = (x: number): string => `${x}vh`
+export const vMin = (x: number): string => `${x}vmin`
+export const vMax = (x: number): string => `${x}vmax`
+export const percent = (x: number): string => `${x}%`

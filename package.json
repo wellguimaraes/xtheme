@@ -1,0 +1,41 @@
+{
+  "name": "xtheme",
+  "version": "0.0.3",
+  "description": "A light, simple and fast way to keep form state",
+  "main": "./lib/xtheme.js",
+  "scripts": {
+    "build": "webpack",
+    "prepublishOnly": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wellguimaraes/xtheme.git"
+  },
+  "keywords": [
+    "react",
+    "theme",
+    "css",
+    "jss",
+    "styled-components",
+    "emotion"
+  ],
+  "author": "Wellington Guimaraes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wellguimaraes/xtheme/issues"
+  },
+  "homepage": "https://github.com/wellguimaraes/xtheme#readme",
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.52",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "ts-loader": "^8.0.5",
+    "typescript": "^4.0.3",
+    "webpack": "^5.1.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}

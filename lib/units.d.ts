@@ -1,0 +1,15 @@
+export declare const px: (x: number) => string;
+export declare const ex: (x: number) => string;
+export declare const cm: (x: number) => string;
+export declare const mm: (x: number) => string;
+export declare const inches: (x: number) => string;
+export declare const pt: (x: number) => string;
+export declare const pc: (x: number) => string;
+export declare const em: (x: number) => string;
+export declare const rem: (x: number) => string;
+export declare const vw: (x: number) => string;
+export declare const vh: (x: number) => string;
+export declare const vMin: (x: number) => string;
+export declare const vMax: (x: number) => string;
+export declare const percent: (x: number) => string;
+//# sourceMappingURL=units.d.ts.map
