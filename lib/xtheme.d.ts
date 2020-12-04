@@ -1,4 +1,4 @@
-import React, { ComponentType, CSSProperties, ReactNode } from 'react';
+import React, { ComponentType } from 'react';
 import * as units from './units';
 export { units };
 export declare const createVariable: (name: PropertyKey) => {
@@ -18,5 +18,5 @@ declare type GlobalThemeProps = {
     override?: VariableValueSet;
 };
 export declare const createGlobalTheme: (values: VariableValueSet) => React.FC<GlobalThemeProps>;
-export declare const createThemeContainer: (Element: ComponentType<any> | keyof JSX.IntrinsicElements, values: VariableValueSet) => ({ className, style, ...otherProps }: any) => JSX.Element;
+export declare function createThemeContainer<T extends ComponentType<any> | keyof JSX.IntrinsicElements>(Element: T, values: VariableValueSet): React.ForwardRefExoticComponent<Pick<any, string | number | symbol> & React.RefAttributes<T>>;
 //# sourceMappingURL=xtheme.d.ts.map

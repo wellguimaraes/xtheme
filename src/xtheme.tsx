@@ -2,6 +2,7 @@ import React, {
   ComponentType,
   CSSProperties,
   ReactNode,
+  Ref,
   useEffect,
   useMemo,
 } from 'react'
@@ -62,13 +63,13 @@ export const createVariableSet = <T extends string>(): CSSVariableSet<T> =>
 
         return variable
       },
-    },
+    }
   ) as any
 
 type GlobalThemeProps = { override?: VariableValueSet }
 
 export const createGlobalTheme = (
-  values: VariableValueSet,
+  values: VariableValueSet
 ): React.FC<GlobalThemeProps> => {
   const WrappedComponent: React.FC<GlobalThemeProps> = ({ override = [] }) => {
     const styles = useMemo(
@@ -76,7 +77,7 @@ export const createGlobalTheme = (
         `:root {${[...values, ...override]
           .map(([variable, value]) => variable.set(value))
           .join(';')}}`,
-      [values, override],
+      [values, override]
     )
 
     useEffect(() => {
@@ -97,40 +98,47 @@ export const createGlobalTheme = (
   return WrappedComponent
 }
 
-export const createThemeContainer = (
-  Element: ComponentType<any> | keyof JSX.IntrinsicElements,
-  values: VariableValueSet,
-) => ({
-  className,
-  style,
-  ...otherProps
-}: {
-  children: ReactNode
-  className: string
-  style: CSSProperties
-} & any) => {
-  const themeClassName = useMemo(
-    () => `theme-container-${Math.random().toString(36).substr(2)}`,
-    [],
-  )
+export function createThemeContainer<
+  T extends ComponentType<any> | keyof JSX.IntrinsicElements
+>(Element: T, values: VariableValueSet) {
+  function ThemeContainer(
+    {
+      className,
+      style,
+      ...otherProps
+    }: {
+      children: ReactNode
+      className: string
+      style: CSSProperties
+    } & any,
+    ref: Ref<T>
+  ) {
+    const themeClassName = useMemo(
+      () => `theme-container-${Math.random().toString(36).substr(2)}`,
+      []
+    )
 
-  useEffect(() => {
-    const styleElement = document.createElement('style')
-    styleElement.innerHTML = `.${themeClassName} { ${values
-      .map(([variable, value]) => variable.set(value))
-      .join(';')} }`
-    document.head?.appendChild(styleElement)
+    useEffect(() => {
+      const styleElement = document.createElement('style')
+      styleElement.innerHTML = `.${themeClassName} { ${values
+        .map(([variable, value]) => variable.set(value))
+        .join(';')} }`
+      document.head?.appendChild(styleElement)
 
-    return () => {
-      document.head?.removeChild(styleElement)
-    }
-  }, [])
+      return () => {
+        document.head?.removeChild(styleElement)
+      }
+    }, [])
 
-  return (
-    <Element
-      style={style}
-      className={`${themeClassName} ` + className}
-      {...otherProps}
-    />
-  )
+    return (
+      <Element
+        ref={ref}
+        style={style}
+        className={`${themeClassName} ` + className}
+        {...otherProps}
+      />
+    )
+  }
+
+  return React.forwardRef(ThemeContainer)
 }
