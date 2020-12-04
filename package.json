@@ -1,6 +1,6 @@
 {
   "name": "xtheme",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A light, simple and fast way to keep form state",
   "main": "./lib/xtheme.js",
   "scripts": {
