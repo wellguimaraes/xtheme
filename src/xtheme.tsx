@@ -10,10 +10,15 @@ import * as units from './units'
 
 export { units }
 
+const variableNameMap = new Map<string, string>()
 let variableSeq = 0
 
 export const createVariable = (name: PropertyKey) => {
-  const fullName = `${name.toString()}_${variableSeq++}`
+  const fullName =
+    variableNameMap.get(name.toString()) ??
+    `${name.toString()}_${variableSeq++}`
+
+  variableNameMap.set(name.toString(), fullName)
 
   return {
     get() {
