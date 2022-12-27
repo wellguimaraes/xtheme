@@ -1,7 +1,7 @@
 {
   "name": "xtheme",
   "version": "0.0.4",
-  "description": "A light, simple and fast way to keep form state",
+  "description": "Experimental way to better deal with theming with React and styled components.",
   "main": "./lib/xtheme.js",
   "scripts": {
     "build": "webpack",
